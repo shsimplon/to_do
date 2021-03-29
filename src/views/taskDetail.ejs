@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+
+<body>
+    <h1>
+        <%= taskDetail.name %>
+    </h1>
+    <form action="/updateTask/<%= taskDetail.id_liste %>" method="POST">
+        <table id="tblTaskDetail">
+            <tr>
+
+                <td>Tache ID</td>
+                <td>
+                    <input type="text" value="<%= taskDetail.id%>" name="task_id">
+                </td>
+            </tr>
+            <tr>
+                <td>Date de Creation</td>
+                <td>
+
+                    <input type="text" disabled="true" id="date_creation" name="date_creation" value=" <%= taskDetail.date.toString('YYYY-MM-DD') %>">
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>Description</td>
+                <td>
+                    <textarea name="description"><%= taskDetail.description %></textarea>
+
+                </td>
+            </tr>
+            <tr>
+                <td>etat</td>
+                <td>
+                    <% var checked=""; if(taskDetail.etat==1) checked="checked" %>
+
+                        <input type="checkbox" value="1" name="etat" <%=checked %> >
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="buttonSubmit" type="submit" value="Enregistrer" name="save"></button>
+                </td>
+                <td><button id="buttonSubmit" class="buttons" formaction="/deleteTask/<%= taskDetail.id %>/<%= taskDetail.id_liste %>" formmethod="get">Supprimer</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</body>
+
+</html>

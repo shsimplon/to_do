@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Les Listes des Tâches</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/style.css'>
+    <!--  <script src='main.js'></script> -->
+</head>
+
+<body>
+    <h1>Les Listes des Tâches</h1>
+    <form action="/taches" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" required name="name" />
+        <input type="submit" />
+
+    </form>
+
+
+    <ul>
+        <%taches.forEach((tache) => {%>
+            <li>
+                <a href="/taches/<%= tache.id_liste %>">
+                    <!-- quand je clique sur ma tache je devrait avoir les parametre dedans -->
+
+
+                    <!-- <%= tache.id_liste %> -->
+                    <%= tache.name%>
+
+                </a>
+            </li>
+            <%})%>
+    </ul>
+</body>
+
+</html>

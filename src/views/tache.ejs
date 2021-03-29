@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <%=tacheList%>
+    </h1>
+
+    <ul>
+        <% taches.forEach((tache) => { %>
+            <li>
+                <%= `${tache.description} ${tache.etat}`%>
+            </li>
+            <% }) %>
+    </ul>
+
+    <table id="taches">
+
+        <%if (taches.length > 0) { %>
+            <tr>
+                <%taches.forEach((tache) => {%>
+                    <td>
+                        <form method="POST" action="/updateStatus/<%= tache.id %>/<%=tacheList%>">
+                            <% var checked=""; if(tache.etat==1) checked="checked" %>
+                                <input type="checkbox" onchange="this.form.submit()" id="check" value="1" name="etat" <%=checked %> >
+                        </form>
+                    </td>
+                    <td>
+                        <a href="/taskDetail/<%= tache.id%>">
+                            <%= tache.name %>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/taskDetail/<%= tache.id%>" id="buttonSubmit" class="buttons">Modifier</a>
+                    </td>
+                    <td>
+                        <a href="/deleteTask/<%= tache.id %>/<%= tache.id_liste %>" id="buttonSubmit" class="buttons">Supprimer</a>
+                    </td>
+            </tr>
+            <%})%>
+                <% } %>
+    </table>
+</body>
+
+</html>
